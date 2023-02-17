@@ -3,7 +3,6 @@
 #include <stdio.h>
 /**
  *main - Entry point
- *Description : prints whether number is positive,negative or zero
  *
  *Return: ALways 0 (Success)
  */
