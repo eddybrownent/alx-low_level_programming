@@ -2,9 +2,9 @@
 
 /**
  * main - Entry point
- * 
+ *
  * Description - program that prints all possible combinations
- * of single-digit numbers.
+ * of single-digit numbers
  *
  * Return: Always 0 (Succes)
  */
