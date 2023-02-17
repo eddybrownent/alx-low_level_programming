@@ -2,12 +2,11 @@
 #include <time.h>
 #include <stdio.h>
 /**
- *main-prints whether numer is positive,negative or zero
- *retun:Always (Success)
+ *main - Entry point
+ *Description : prints whether number is positive,negative or zero
  *
+ *Return: ALways 0 (Success)
  */
-
-/* betty style doc for function main goes there */
 int main(void)
 {
 	int n;
