@@ -15,7 +15,7 @@ unsigned long hf1, hf2;
 for (count = 0; count < 92; count++)
 {
 sum = f1 + f2;
-printf("%lu,", sum);
+printf("%lu, ", sum);
 f1 = f2;
 f2 = sum;
 }
@@ -34,7 +34,7 @@ hf2 += 10000000000;
 }
 printf("%lu%lu", hf1, hf2);
 if (count != 98)
-printf(",");
+printf(", ");
 f1_hf1 = f2_hf1;
 f1_hf2 = f2_hf2;
 f2_hf1 = hf1;
