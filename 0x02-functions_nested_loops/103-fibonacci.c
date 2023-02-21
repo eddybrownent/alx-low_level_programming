@@ -20,4 +20,3 @@ b = c - b;
 printf("%ld\n", sum);
 return (0);
 }
-}
