@@ -35,7 +35,7 @@ hf2 += 10000000000;
 printf("%lu%lu", hf1, hf2);
 if (count != 98)
 printf(", ");
-f1_hf1 = if2_hf1;
+f1_hf1 = f2_hf1;
 f1_hf2 = f2_hf2;
 f2_hf1 = hf1;
 f2_hf2 = hf2;
