@@ -27,7 +27,7 @@ for (count = 93; count < 99; count++)
 {
 hf1 = f1_hf1 + f2_hf1;
 hf2 = f1_hf2 + f2_hf2;
-if (f1_hf2 + f2_hf2 > 9999999999)
+if (f1_hf2 + f2_hf2 > 999999999)
 {
 hf1 += 1;
 hf2 += 10000000000;
