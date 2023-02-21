@@ -2,10 +2,10 @@
 
 /**
 * main - prints the first 98 fibonacci numbers, starting
-* with 1 and 2 
+* with 1 and 2
 * Return: 0 (Success)
 */
-int main (void)
+int main(void)
 {
 int count;
 unsigned long f1 = 0, f2 = 1, sum;
