@@ -33,7 +33,7 @@ return (NULL);
 for (index = 0; s1[index]; index++)
 concat_str[concat_index++] = s1[index];
 
- for (index = 0; s2[index]; index++)
+for (index = 0; s2[index]; index++)
 concat_str[concat_index++] = s2[index];
 
 return (concat_str);
