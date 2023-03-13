@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdlib.h>
 /**
 * create_array - creates an array of chars, and
 * initializes it with a specific char
@@ -15,11 +15,11 @@ char *array;
 unsigned int index;
 
 if (size == 0)
-return (Null);
+return (NULL);
 array = malloc(sizeof(char) * size);
 
-if (array == Null)
-return (Null);
+if (array == NULL)
+return (NULL);
 
 for (index = 0; index < size; index++)
 array[index] = c;
