@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 /**
-* *array - creates an array of integers
+* *array_range- creates an array of integers
 *@max: maximum range of values stored
-*@mini: minimum range of values stored
+*@min: minimum range of values stored
 *Return: pointer to the new array
 */
 
