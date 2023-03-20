@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <stddef.h>
-#include <stdio.h>
 #include "main.h"
 
 int find_len(char *str);
@@ -146,14 +143,12 @@ next_prod--;
 if (tens)
 *final_prod = (tens % 10) + '0';
 }
-
 /**
 * main - Multiplies two positive numbers.
 * @argv: The number of arguments passed to the program.
 * @argc: An array of pointers to the arguments.
-*
 * Description: If the number of arguments is incorrect or one number
-*              contains non-digits, the function exits with a status of 98.
+* contains non-digits, the function exits with a status of 98.
 * Return: Always 0.
 */
 int main(int argc, char *argv[])
@@ -191,6 +186,5 @@ putchar(final_prod[index]);
 putchar('\n');
 free(next_prod);
 free(final_prod);
-
 return (0);
 }
