@@ -1,11 +1,9 @@
 #include "variadic_functions.h"
-#include <stdio.h>
-#include <stdarg.h>
 
 /**
-* print_strings - Print the string
-* @separator: The string to be printed between strings
-* @n: The number of strings passed to the function
+* print_strings - Prints the string
+* @separator: The string separator
+* @n: The number of strings
 * Return: nothing
 */
 void print_strings(const char *separator, const unsigned int n, ...)
