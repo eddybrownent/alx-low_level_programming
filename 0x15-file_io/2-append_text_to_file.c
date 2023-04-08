@@ -31,14 +31,12 @@ if (text_content != NULL)
 {
 len = strlen(text_content);
 byte_written = write(fd_to_append, text_content, len);
-}
-
 if (byte_written == -1)
 {
 close(fd_to_append);
 return (-1);
 }
-
+}
 
 close(fd_to_append);
 return (-1);
