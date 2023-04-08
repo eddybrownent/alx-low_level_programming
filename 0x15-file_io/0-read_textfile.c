@@ -23,7 +23,7 @@ if (fd ==  -1)
 return (0);
 }
 
-buffer = malloc(letters + 1);
+buffer = malloc(sizeof(char) * letters);
 if (buffer == NULL)
 {
 close(fd);
@@ -39,7 +39,7 @@ return (0);
 }
 
 buffer[char_read] = '\0';
-printf("%s", buffer);
+write(STDOUT_FILENO, buffer, char_read);
 
 close(fd);
 free(buffer);
