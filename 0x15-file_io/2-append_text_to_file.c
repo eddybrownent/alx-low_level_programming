@@ -16,16 +16,12 @@ int fd_to_append;
 int byte_written;
 int len;
 if (filename == NULL)
-{
 return (-1);
-}
+
 
 fd_to_append = open(filename, O_WRONLY | O_APPEND);
 if (fd_to_append == -1)
-{
 return (-1);
-}
-
 
 if (text_content != NULL)
 {
