@@ -8,8 +8,8 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 char *buffer = NULL;
-FILE *fp = NULL;
 ssize_t char_read = 0;
+int fd = -1;
 
 if (filename == NULL)
 {
@@ -17,8 +17,8 @@ return (0);
 }
 
 
-fp = fopen(filename, "r");
-if (fp == NULL)
+fd = open(filename, O_RDONLY);
+if (fd ==  -1)
 {
 return (0);
 }
@@ -26,14 +26,14 @@ return (0);
 buffer = malloc(letters + 1);
 if (buffer == NULL)
 {
-fclose(fp);
+close(fd);
 return (0);
 }
 
-char_read = fread(buffer, sizeof(char), letters, fp);
-if (char_read == 0)
+char_read = read(fd, buffer, letters);
+if (char_read == -1)
 {
-fclose(fp);
+close(fd);
 free(buffer);
 return (0);
 }
@@ -41,7 +41,7 @@ return (0);
 buffer[char_read] = '\0';
 printf("%s", buffer);
 
-fclose(fp);
+close(fd);
 free(buffer);
 
 
