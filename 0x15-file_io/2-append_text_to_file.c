@@ -35,5 +35,5 @@ return (-1);
 }
 
 close(fd_to_append);
-return (-1);
+return (1);
 }
