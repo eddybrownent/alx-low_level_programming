@@ -4,48 +4,46 @@
 * main - copies file contents from one to another file
 * @argv: passed arguments.
 * @argc: argument count.
-*
 * Return: 0 if success
-*
 */
 int main(int argc, char *argv[])
 {
-FILE *file_from, *file_to;
+int fd_to, fd_from, num_write, num_read;
 char buffer[BUFFER_SIZE];
-size_t bytes_read;
 if (argc != 3)
 {
-printf("Usage: cp file_from file_to\n");
+dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 exit(97);
 }
-file_from = fopen(argv[1], "rb");
-if (file_from == NULL)
+fd_from = open(argv[1], O_RDONLY);
+if (fd_from == -1)
 {
-printf("Error: Can't read from file NAME_OF_THE_FILE\n");
+dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 exit(98);
 }
-file_to = fopen(argv[2], "wb");
-if (file_to == NULL)
+fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+if (fd_to == -1)
 {
-printf("Error: can't write to NAME_OF_THE_FILE\n");
+dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
 exit(99);
 }
-while ((bytes_read = fread(buffer, 1, BUFFER_SIZE, file_from)) > 0)
+while ((num_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 {
-if (fwrite(buffer, 1, bytes_read, file_to) != bytes_read)
+num_write = write(fd_to, buffer, num_read);
+if (num_write != num_read)
 {
-printf("Error: Can't write to file NAME_OF_THE_FILE\n");
+dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
 exit(99);
 }
 }
-if (fclose(file_from) != 0)
+if (close(fd_from) == -1)
 {
-printf("Error: Can't close fd FD_VALUE\n");
+dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd_from);
 exit(100);
 }
-if (fclose(file_to) != 0)
+if (close(fd_to) == -1)
 {
-printf("Error: Can't close fd FD_VALUE\n");
+dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd_to);
 exit(100);
 }
 return (0);
