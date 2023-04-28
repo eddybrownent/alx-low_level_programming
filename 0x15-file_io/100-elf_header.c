@@ -8,7 +8,6 @@
 
 /**
  * check_elf - Checks if a file is an ELF file.
- * @e_ident: A pointer to an array 
  *
  */
 void check_elf(unsigned char *e_ident)
@@ -45,7 +44,6 @@ void print_magic(unsigned char *e_ident)
 		if (index == EI_NIDENT - 1)
 			printf("\n");
 		else
-			printf(" ");
 	}
 }
 
@@ -172,7 +170,6 @@ void print_abi(unsigned char *e_ident)
 }
 
 /**
- * print_type - Prints the type of an ELF header.
  * @e_type: The ELF type.
  */
 void print_type(unsigned int e_type, unsigned char *e_ident)
@@ -204,9 +201,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 	}
 }
 
- /* print_entry - Prints the entry point of an ELF header.
- * @e_entry: The address
- * @e_ident: A pointer to an array 
+ /* @e_ident: A pointer to an array 
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
@@ -245,7 +240,6 @@ void close_elf(int elf)
 
 /**
  * main - Displays info
- * @argc: The number of arguments
  * @argv: the arguments.
  *
  * Return: 0.
@@ -271,7 +265,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	r = read(o, header, sizeof(Elf64_Ehdr));
 	if (r == -1)
 	{
-		free(header);
 		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 		exit(0);
@@ -288,7 +281,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	print_type(header->e_type, header->e_ident);
 	print_entry(header->e_entry, header->e_ident);
 
-	free(header);
 	close_elf(o);
 	return (0);
 }
