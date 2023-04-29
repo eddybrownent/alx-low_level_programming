@@ -1,50 +1,73 @@
-#include "main.h"
-#define BUFFER_SIZE 1024
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+void check_st(int st, int file_des, char *file_n, char type);
 /**
-* main - copies file contents from one to another file
-* @argv: passed arguments.
-* @argc: argument count.
-* Return: 0 if success
-*/
+ * main - copies the content of one file to another
+ * @argc: argument count
+ * @argv: arguments passed
+ *
+ * Return: 1 on success, exit otherwise
+ */
 int main(int argc, char *argv[])
 {
-int fd_to, fd_from, num_write, num_read;
-char buffer[BUFFER_SIZE];
-if (argc != 3)
-{
-dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-exit(97);
+	int shr, destiny, num_read = 1024, wrote, close_shr, close_destiny;
+	unsigned int type = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
+	char buf[1024];
+
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "%s", "Usage: cp file_from file_to\n");
+		exit(97);
+	}
+	shr = open(argv[1], O_RDONLY);
+	check_st(shr, -1, argv[1], 'O');
+	destiny = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, type);
+	check_st(destiny, -1, argv[2], 'W');
+	while (num_read == 1024)
+	{
+		num_read = read(shr, buf, sizeof(buf));
+		if (num_read == -1)
+			check_st(-1, -1, argv[1], 'O');
+		wrote = write(destiny, buf, num_read);
+		if (wrote == -1)
+			check_st(-1, -1, argv[2], 'W');
+	}
+	close_shr = close(shr);
+	check_st(close_shr, shr, NULL, 'C');
+	close_destiny = close(destiny);
+	check_st(close_destiny, destiny, NULL, 'C');
+	return (0);
 }
-fd_from = open(argv[1], O_RDONLY);
-if (fd_from == -1)
+
+/**
+ * check_st - cle can be opened or closed
+ * @st: file descriptor of the file to be opened
+ * @file_n: name of the file
+ * @type: closing or opening
+ * @file_des: file descriptor
+ *
+ * Return: void
+ */
+void check_st(int st, int file_des, char *file_n, char type)
 {
-dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-exit(98);
-}
-fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-if (fd_to == -1)
-{
-dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
-exit(99);
-}
-while ((num_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
-{
-num_write = write(fd_to, buffer, num_read);
-if (num_write != num_read)
-{
-dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
-exit(99);
-}
-}
-if (close(fd_from) == -1)
-{
-dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd_from);
-exit(100);
-}
-if (close(fd_to) == -1)
-{
-dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd_to);
-exit(100);
-}
-return (0);
+	if (type == 'C' && st == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Cant close file_des %d\n", file_des);
+		exit(100);
+	}
+	else if (type == 'O' && st == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Cant read file %s\n", file_n);
+		exit(98);
+	}
+	else if (type == 'W' && st == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Cant write  %s\n", file_n);
+		exit(99);
+	}
 }
