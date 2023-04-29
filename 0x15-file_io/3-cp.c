@@ -4,7 +4,7 @@ char *c_buf(char *file);
 void cls_file(int fd);
 
 /**
-* create_buffer - allocates byte for a buffer.
+* c_buf - allocates byte for a buffer.
 * @file: name of file buffer is storing chars for.
 *
 * Return: a pointer to the buffer.
