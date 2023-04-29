@@ -222,8 +222,8 @@ void print_make(unsigned int e_type, unsigned char *e_ident)
 
 /**
  * print_ent - Prints the entry point of an ELF h
- * @e_entry: The addrentry point.
- * @e_ident: A pointer to an array containing the ELF
+ * @e_entry: The addtry po
+ * @e_ident: A pointer to an arrntaining the ELF
  */
 void print_ent(unsigned long int e_entry, unsigned char *e_ident)
 {
@@ -244,10 +244,10 @@ void print_ent(unsigned long int e_entry, unsigned char *e_ident)
 }
 
 /**
- * close_elf - Closes an ELF 
- * @elf: The file descriptor of the ELF
+ * close_elf - Closes an ELF
+ * @elf: The file descr of the ELF
  *
- * Description: If the file cannot be closed - 
+ * Description: If the file cannot be closed
  */
 void close_elf(int elf)
 {
@@ -261,12 +261,12 @@ void close_elf(int elf)
 
 /**
  * main - Displays the informatined in the
- *        ELF header at the start of aoam.
+ *        ELF header atart of aoam.
  * @argv: An array of pointers to the argu
- * Return: 0 on success.
+ * Return: 0 on sucs.
  *
  * Description: If the file is not an ELF File or
- *              the function fails - exit code
+ *              the function s - exit code
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
