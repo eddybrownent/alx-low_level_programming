@@ -2,42 +2,42 @@
 
 /**
 * append_text_to_file - appends text at the end of a file.
-* @filename: is the name of the file.
+* @file_n: is the name of the file.
 * @text_content: is the NULL terminated string to add.
 * at the end of the file.
 *
 * Return: 1 on success / -1 on failure.
 */
 
-int append_text_to_file(const char *filename, char *text_content)
+int append_text_to_file(const char *file_n, char *text_content)
 {
 
-int fd_to_append;
+int file_des_to_append;
 int len;
 int byte_written;
 
-if (filename == NULL)
+if (file_n == NULL)
 {
 return (-1);
 }
 
-fd_to_append = open(filename, O_WRONLY | O_APPEND);
-if (fd_to_append == -1)
+file_des_to_append = open(file_n, O_WRONLY | O_APPEND);
+if (file_des_to_append == -1)
 return (-1);
 }
 
 if (text_content != NULL)
 {
 len = strlen(text_content);
-byte_written = write(fd_to_append, text_content, len);
+byte_written = write(file_des_to_append, text_content, len);
 
 if (byte_written == -1)
 {
-close(fd_to_append);
+close(file_des_to_append);
 
 return (-1);
 }
 }
-close(fd_to_append)
+close(file_des_to_append)
 return (-1);
 }

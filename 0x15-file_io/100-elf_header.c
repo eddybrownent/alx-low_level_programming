@@ -1,6 +1,6 @@
 #include <elf.h>
 #include <sys/types.h>
-#include <sys/stat.h>
+#include <sys/st.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -97,13 +97,13 @@ void print_d(unsigned char *e_ident)
 
 	switch (e_ident[EI_DATA])
 	{
-	case ELFDATANONE:
+	case ELfile_desATANONE:
 		printf("none\n");
 		break;
-	case ELFDATA2LSB:
+	case ELfile_desATA2LSB:
 		printf("2's complement, little endian\n");
 		break;
-	case ELFDATA2MSB:
+	case ELfile_desATA2MSB:
 		printf("2's complement, big endian\n");
 		break;
 	default:
@@ -193,7 +193,7 @@ void print_abi(unsigned char *e_ident)
  */
 void print_t(unsigned int e_type, unsigned char *e_ident)
 {
-	if (e_ident[EI_DATA] == ELFDATA2MSB)
+	if (e_ident[EI_DATA] == ELfile_desATA2MSB)
 		e_type >>= 8;
 
 	printf("  Type:                              ");
@@ -229,7 +229,7 @@ void print_ent(unsigned long int e_entry, unsigned char *e_ident)
 {
 	printf("  Entry point address:               ");
 
-	if (e_ident[EI_DATA] == ELFDATA2MSB)
+	if (e_ident[EI_DATA] == ELfile_desATA2MSB)
 	{
 		e_entry = ((e_entry << 8) & 0xFF00FF00) |
 				  ((e_entry >> 8) & 0xFF00FF);
@@ -254,7 +254,7 @@ void cl_elf(int elf)
 	if (close(elf) == -1)
 	{
 		dprintf(STDERR_FILENO,
-				"Error: Can't close fd %d\n", elf);
+				"Error: Can't close file_des %d\n", elf);
 
 		exit(98);
 	}
