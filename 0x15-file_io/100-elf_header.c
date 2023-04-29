@@ -261,8 +261,8 @@ void close_elf(int elf)
 
 /**
  * main - Displays the informatined in the
- *        ELF header atart of aoam.
  * @argv: An array of pointers to the argu
+ * @argc: the argument count
  * Return: 0 on sucs.
  *
  * Description: If the file is not an ELF File or
