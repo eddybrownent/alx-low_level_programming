@@ -5,4 +5,4 @@ if __name__ == "__main__":
     names = dir(hidden_4)
     for tag in names:
         if tag[:2] != "__":
-            print(name)
+            print(tag)
