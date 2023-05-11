@@ -4,4 +4,4 @@ import hidden_4
 names = dir(hidden_4)
 for tag in names:
     if tag[:2] != "__":
-        printnt(name)
+        print(name)
