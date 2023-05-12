@@ -5,7 +5,7 @@ if __name__ == "__main__":
     operators = '+', '-', '*', '/'
     arg_c = len(sys.argv)
 
-    if arg_c != 4:
+    if arg_c != 3:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         sys.exit(1)
     a = int(sys.argv[1])
