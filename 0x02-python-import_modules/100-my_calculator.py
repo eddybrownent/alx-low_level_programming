@@ -20,5 +20,4 @@ if __name__ == "__main__":
     elif sys.argv[2] == '*':
         print("{} {} {} = {}".format(a, sys.argv[2], b, mul(a, b)))
     elif sys.argv[2] == '/':
-        print("{} {} {} = {}".format(a, sys.argv[2], b, add(a, b)))
-    sys.exit(1)
+        print("{} {} {} = {}".format(a, sys.argv[2], b, div(a, b)))
