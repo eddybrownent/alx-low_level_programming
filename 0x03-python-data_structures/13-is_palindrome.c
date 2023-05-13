@@ -46,9 +46,7 @@ int is_palindrome(listint_t **head)
 	while (second_half != NULL)
 	{
 		if ((*head)->n != second_half->n)
-		{
-			break;
-		}
+			return (0);
 		*head = (*head)->next;
 		second_half = second_half->next;
 	}
