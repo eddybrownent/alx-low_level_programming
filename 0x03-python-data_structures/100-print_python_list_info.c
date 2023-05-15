@@ -1,4 +1,4 @@
-#include <python.h>
+#include <Python.h>
 #include <listobject.h>
 #include <object.h>
 
@@ -17,6 +17,6 @@ void print_python_list_info(PyObject *p)
 	printf("[*] Allocated = %d\n", obj->allocated);
 	for (i = 0; i < size; i++)
 	{
-		printf("Element %d: %s\n", i, Py_TYPE(obj->ob_item[i]->tp_name);
+		printf("Element %d: %s\n", i, Py_TYPE(obj->ob_item[i])->tp_name);
 	}
 }
