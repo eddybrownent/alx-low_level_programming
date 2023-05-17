@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 def square(a):
-    return( a ** 2)
+    return (a ** 2)
+
 
 def square_matrix_simple(matrix=[]):
     square_matrix = matrix.copy()
