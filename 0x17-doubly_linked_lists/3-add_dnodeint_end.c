@@ -1,7 +1,11 @@
 #include "lists.h"
 
 /**
+ * add_dnodeint_end - adds new node at end of double linked list
+ * @n: the new number to be added
+ * @head: points to the list
  *
+ * Return: new_node
  */
 
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
