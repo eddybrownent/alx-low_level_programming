@@ -9,8 +9,8 @@
  */
 void generatePassword(const char *username, char *password)
 {
-
-	const char *code = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+	const char *codex =
+		"A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
 	int len = strlen(username);
 	int i, temp;
 
