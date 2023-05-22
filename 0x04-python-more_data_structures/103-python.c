@@ -55,21 +55,20 @@ void print_python_bytes(PyObject *p)
 
 void print_python_list(PyObject *p)
 {
-	Py_ssize_t size, i;
+	long int size, i;
+	PyListObject *list;
+	PyObject *obj;
 
 	printf("[*] Python list info\n");
-	size = PyList_Size(p);
+	size = ((PyVarObject *)(p))->ob_size;
 	printf("[*] Size of the Python List = %ld\n", size);
-	printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
+	printf("[*] Allocated = %ld\n", list->allocated);
 
 	for (i = 0; i < size; i++)
 	{
-		PyObject *item = PyList_GetItem(p, i);
-		const char *type_name = item->ob_type->tp_name;
-
-		printf("Element %ld: %s\n", i, type_name);
-
-		if (PyBytes_Check(item))
-			print_python_bytes(item);
+		obj = ((PyListObject *)p)->ob_item[i];
+		printf("Element %ld: %s\n", i, ((obj)->ob_type)->tp_name);
+		if (PyBytes_Check(obj))
+			print_python_bytes(obj);
 	}
 }
