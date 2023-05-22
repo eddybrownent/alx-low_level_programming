@@ -2,17 +2,16 @@
 #include <Python.h>
 
 /**
- * print_python_bytes - Prints bytes information
+ * print_python_bytes - Printing bytes information
  *
- * @p: Python Object
- * Return: no return
+ * @p: the  Python Object
+ * Return: notning
  */
 
 void print_python_bytes(PyObject *p)
 {
-	PyBytesObject *bytes = (PyBytesObject *)p;
-	Py_ssize_t size, i, limit;
 	char *string;
+	long int size, i, limit;
 
 	printf("[.] bytes object info\n");
 	if (!PyBytes_Check(p))
@@ -22,7 +21,7 @@ void print_python_bytes(PyObject *p)
 	}
 
 	size = PyBytes_Size(p);
-	string = PyBytes_AsString(p);
+	string = ((PyBytesObject *)p)->ob_sval;
 
 	printf("  size: %ld\n", size);
 	printf("  trying string: %s\n", string);
@@ -36,7 +35,6 @@ void print_python_bytes(PyObject *p)
 	printf("  first %ld bytes:", limit);
 	for (i = 0; i < limit; i++)
 	{
-		char value = string[i];
 
 		if (string[i] >= 0)
 			printf(" %02x", string[i]);
@@ -47,10 +45,10 @@ void print_python_bytes(PyObject *p)
 }
 
 /**
- * print_python_list - Prints list information
+ * print_python_list - Prints the  list infor
  *
- * @p: Python Object
- * Return: no return
+ * @p: the Python Object
+ * Return: nothing
  */
 
 void print_python_list(PyObject *p)
