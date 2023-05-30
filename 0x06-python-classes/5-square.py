@@ -6,7 +6,7 @@ class Square:
     """
     This class represents a square
 
-    Attributes: 
+    Attributes:
         __size (int): the size of the square (private)
     """
     def __init__(self, size=0):
@@ -32,7 +32,7 @@ class Square:
         """get the size of the square"""
 
         return self.__size
-    
+
     @size.setter
     def size(self, value):
         if type(value) is not int:
