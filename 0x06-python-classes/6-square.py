@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """defining a square"""
 
+
 class Square:
     """
     This class represents a square.
@@ -29,7 +30,7 @@ class Square:
             int: The size of the square.
         """
         return self.__size
-    
+
     @size.setter
     def size(self, value):
         """
@@ -57,7 +58,7 @@ class Square:
             tuple: The position of the square.
         """
         return self.__position
-    
+
     @position.setter
     def position(self, value):
         """
@@ -67,7 +68,7 @@ class Square:
             value (tuple): The position value to set.
 
         Raises:
-            TypeError: If the value is not a tuple or if it doesn't contain 2 positive integers.
+            TypeError: If the value != tuple or doesn't contain 2 positive ints
             ValueError: If the value contains non-positive integers.
         """
         if type(value) is not tuple or len(value) != 2:
@@ -87,16 +88,16 @@ class Square:
 
     def posi_print(self):
         """To return the position in spaces"""
-        posi=''
+        posi = ''
         if self.size == 0:
             return '\n'
         for i in range(self.position[1]):
             posi += '\n'
         for i in range(self.size):
             for i in range(self.position[0]):
-                posi +=' '
+                posi += ' '
             for i in range(self.size):
-                posi +='#'
+                posi += '#'
             posi += '\n'
         return posi
 
