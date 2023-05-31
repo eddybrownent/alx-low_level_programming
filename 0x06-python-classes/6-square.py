@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """defining a square"""
 
-
 class Square:
     """
     This class represents a square.
@@ -17,16 +16,9 @@ class Square:
         Args:
             size (int): The size of the square.
             position (tuple): The position of the square.
-
-        Raises:
-            TypeError: If size != int or position != tuple 2 positive ints.
-            ValueError: If size is negative or position contains neg ints.
         """
         self.size = size
         self.position = position
-
-    def __str__(self):
-        self.my_print()
 
     @property
     def size(self):
@@ -37,7 +29,7 @@ class Square:
             int: The size of the square.
         """
         return self.__size
-
+    
     @size.setter
     def size(self, value):
         """
@@ -65,7 +57,7 @@ class Square:
             tuple: The position of the square.
         """
         return self.__position
-
+    
     @position.setter
     def position(self, value):
         """
@@ -75,7 +67,7 @@ class Square:
             value (tuple): The position value to set.
 
         Raises:
-            TypeError: If the value != tuple or doesnt contain 2 positive ints.
+            TypeError: If the value is not a tuple or if it doesn't contain 2 positive integers.
             ValueError: If the value contains non-positive integers.
         """
         if type(value) is not tuple or len(value) != 2:
@@ -91,21 +83,25 @@ class Square:
         Returns:
             int: The area of the square.
         """
-        return self.__size ** 2
+        return self.__size * self.__size
+
+    def posi_print(self):
+        """To return the position in spaces"""
+        posi=''
+        if self.size == 0:
+            return '\n'
+        for i in range(self.position[1]):
+            posi += '\n'
+        for i in range(self.size):
+            for i in range(self.position[0]):
+                posi +=' '
+            for i in range(self.size):
+                posi +='#'
+            posi += '\n'
+        return posi
 
     def my_print(self):
         """
-        Print the square with the character '#'.
-
-        If the size is equal to 0, an empty line is printed.
-        The position is used to offset the square's position.
-        Spaces are not filled in the lines when position[1] > 0.
+        Print the square in position with the character '#'.
         """
-        if self.__size == 0:
-            print()
-        else:
-            for i in range(self.__position[1]):
-                print()
-            for i in range(self.__size):
-                print(" " * self.__position[0], end="")
-                print("#" * self.__size)
+        print(self.posi_print(), end="")
