@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""module to compare two squares"""
 
 class Square:
     """
