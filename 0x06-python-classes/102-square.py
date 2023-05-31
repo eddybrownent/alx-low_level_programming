@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """module to compare two squares"""
 
+
 class Square:
     """
     Represents a square
@@ -65,7 +66,7 @@ class Square:
         Returns:
             bool: true if areas are equal else false
         """
-        return self.area == other.area()
+        return self.area() == other.area()
 
     def __ne__(self, other):
         """
