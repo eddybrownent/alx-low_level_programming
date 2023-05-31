@@ -14,7 +14,7 @@ class Square:
         initializes a square instance
 
         Args:
-            size (float or int): the size of the square
+            size (int): the size of the square
         """
         self.size = size
 
@@ -24,7 +24,7 @@ class Square:
         Gets the size of the square
 
         Returns:
-            float or int; the size of the square
+            int; the size of the square
         """
         return self.size
 
@@ -34,14 +34,14 @@ class Square:
         Set the size of the square.
 
         Args:
-            value (float or int): The size of the square.
+            value (int): The size of the square.
 
         Raises:
             TypeError: If size is not a number.
             ValueError: If size is less than 0.
         """
-        if not isinstance(value, (float, int)):
-            raise TypeError("size must be a number")
+        if type(value) is not int:
+            raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError('size must be >= 0')
         self.__size = value
@@ -51,7 +51,7 @@ class Square:
         Calculate the area of the square.
 
         Returns:
-            float or int: The area of the square.
+            int: The area of the square.
         """
         return self.__size * self.__size
 
