@@ -20,6 +20,7 @@ class MagicClass:
         Raises:
             TypeError: if the radious is not a float or int
         """
+        self.__radius = 0
         if type(radius) is not int and type(radius) is not float:
             raise TypeError('radius must be a number')
         self.__radius = radius
@@ -31,7 +32,7 @@ class MagicClass:
         Returns:
         float: the area of the cirle
         """
-        return self.__radious ** 2 * math.pi
+        return math.pi * (self.__radius ** 2)
 
     def circumference(self):
         """
