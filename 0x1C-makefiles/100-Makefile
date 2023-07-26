@@ -1,5 +1,5 @@
 # Specifies the compiler to be used
-CC == gcc
+CC = gcc
 
 # List of source files
 SRC = main.c school.c
@@ -17,19 +17,19 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 .PHONY: all clean oclean fclean re
 
 # Default target to build the executable 'school'
-all: m.h $(OBJ)
+all : m.h $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 # Rule to clean temporary Emacs and Vim files, and the executable
-clean:
-	$(RM) *~$(NAME)
+clean :
+	$(RM) *~ $(NAME)
 
 # Rule to remove only the object files
-oclean:
+oclean :
 	$(RM) $(OBJ)
 
 # Rule to combine 'clean' and 'oclean' to remove all temporary files and object files
-fclean: clean oclean
+fclean : clean oclean
 
 # Rule to combine 'oclean' and 'all' to force recompilation of all source files
-re : oclean all
+re : fclean all
