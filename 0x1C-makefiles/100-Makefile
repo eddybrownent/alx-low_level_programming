@@ -1,0 +1,35 @@
+# Specifies the compiler to be used
+CC == gcc
+
+# List of source files
+SRC = main.c school.c
+
+# Convert the source files into corresponding object files
+OBJ = $(SRC:.c=.o)
+
+# Name of the executable to be generated
+NAME = school
+
+# Compiler flags to be used
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Declare the targets that are phony (not representing actual files)
+.PHONY: all clean oclean fclean re
+
+# Default target to build the executable 'school'
+all: m.h $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+# Rule to clean temporary Emacs and Vim files, and the executable
+clean:
+	$(RM) *~$(NAME)
+
+# Rule to remove only the object files
+oclean:
+	$(RM) $(OBJ)
+
+# Rule to combine 'clean' and 'oclean' to remove all temporary files and object files
+fclean: clean oclean
+
+# Rule to combine 'oclean' and 'all' to force recompilation of all source files
+re : oclean all
