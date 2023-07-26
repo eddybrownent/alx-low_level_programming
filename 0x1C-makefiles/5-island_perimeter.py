@@ -4,6 +4,7 @@ This module has a method tha calculates the perimeter
 of an island in a grid
 """
 
+
 def island_perimeter(grid):
     """
     Returns the perimeter of the island in the grid
@@ -17,7 +18,7 @@ def island_perimeter(grid):
         for col in range(cols):
             if grid[row][col] == 1:
                 """
-                 If the cell is outside the grid or adjacent to water, 
+                 If the cell is outside the grid or adjacent to water,
                  add 1 to the perimeter
                 """
                 if row == 0 or grid[row - 1][col] == 0:
